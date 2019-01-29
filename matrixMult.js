@@ -41,5 +41,6 @@ function matrixMult(a, b) {
 }
 
 let z = matrixMult(m1, m2);
-
 console.log(z);
+
+// TODO: ensure working with all allowable matrices
