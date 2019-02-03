@@ -5,20 +5,18 @@
 
 
 # Philip Tenteromano
-# Data Mining
-# Dr. Yijun Zhao
 # 1/28/2019
-# HW1
 # 
 # KNN Algorithm implementation
 # Using training and test .arff files
-# Outputs to new .arff file
+# Outputs to a newly created results.arff file
 
-# Import packages
+# to read arff file
 from scipy.io import arff
+# for euclidean distance
 import scipy
+# pandas <3
 import pandas as pd
-import sys
 # for output
 from shutil import copyfile
 
@@ -149,9 +147,11 @@ def kNearestNeighbors(test, train, k=None):
             if tiebreaker:
                 if flowerIndex == minDistIndex:
                     winner = flowerKey
+                    break
             else:
                 if flowerIndex == maxVotesIndex:
                     winner = flowerKey
+                    break
         
         # STEP 6
         # finally, find line to append and add to arff file
@@ -172,4 +172,3 @@ def kNearestNeighbors(test, train, k=None):
 # each call will append the result to the results.arff file
 for kVals in range(1,10,2):
     kNearestNeighbors(testDf, trainDf, kVals)
-
