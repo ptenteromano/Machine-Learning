@@ -43,7 +43,6 @@ testDf = pd.DataFrame(testing[0])
 # get our results file - avoid manipulating test.arff
 copyfile('test.arff', 'results.arff')
 
-
 # In[5]:
 
 
@@ -60,7 +59,6 @@ with open(my_file, 'w') as file:
 
 
 # In[6]:
-
 
 # used to append to the resulting arff file
 def appendToResults(testIndex, classifiedLabel):
@@ -82,12 +80,12 @@ def appendToResults(testIndex, classifiedLabel):
 
 # In[7]:
 
-
 # KNN algorithm
 def kNearestNeighbors(test, train, k=None):
     '''
     KNN Algorithm
     Takes a 'test' and 'train' dataframe, and 'k' as an integer
+    TODO: implement my own euclidean distance algorithm
     '''
     # check for valid k
     if (k == None) or (k < 1):
