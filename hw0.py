@@ -27,7 +27,7 @@ print(correctness)
 
 # passing in 2d list (2 rows by C columns)
 def getTraining(fullData):
-  training = [[],[]]
+  training = [[], []]
   for r in range(len(fullData)):
     for c in range(len(fullData[r]) // 3):
       training[r].append(fullData[r][c])
