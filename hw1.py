@@ -11,7 +11,7 @@
 # hw1.py
 
 # using jupyter notebook
-# For the following, Standard deviation is given to be 2
+# For the following, Standard Deviation is given to be 2
 
 
 # In[2]:
@@ -69,26 +69,26 @@ seniors = training[training[:,0] == 4]
 # DISTRIBUTION COMMENT
 # These histograms of the data show that these are normal distributions
 # Their is a bell curve in each of them
-plt.hist(testing)
-plt.show()
+# plt.hist(testing)
+# plt.show()
 
 
 # In[9]:
 
 
-plt.hist(minors)
-plt.hist(youth)
-plt.hist(adults)
-plt.hist(seniors)
-plt.show()
+# plt.hist(minors)
+# plt.hist(youth)
+# plt.hist(adults)
+# plt.hist(seniors)
+# plt.show()
 
 
 # In[10]:
 
 
 # all classes
-plt.hist(training)
-plt.show()
+# plt.hist(training)
+# plt.show()
 
 
 # In[11]:
@@ -249,14 +249,14 @@ def evaluateMP(testData, meanVector, priorVector):
     return correct / testData.shape[0]
 
 
-# In[24]:
+# In[47]:
 
 
 # MAP - using testData against entire training MeanVector
 evaluateMP(testing, means, prior)
 
 
-# In[25]:
+# In[44]:
 
 
 # reporting for MLE with means of the first 6, 18, 54, 162 of training samples
@@ -269,10 +269,10 @@ for i in range(4):
 
     # increment slice by multiple of 3 for next test
     first_n *= 3
-    
+print('\n')
 
 
-# In[26]:
+# In[49]:
 
 
 # reporting for MAP with means of first 6, 18, 54, 162
@@ -286,7 +286,7 @@ for i in range(4):
     # increment slice by multiple of 3 for next test
     first_n *= 3
 
-
+print('\n')
 # In[27]:
 
 
@@ -360,13 +360,13 @@ def labelMP2(amountDrinks, meansMatrix, priorVector):
     return classes[index]
 
 
-# In[33]:
+# In[51]:
 
 
 labelMP2(testing_2[1,1:], drinkMeanMatrix, prior)
 
 
-# In[34]:
+# In[ ]:
 
 
 # running above function for the first few testData values 
