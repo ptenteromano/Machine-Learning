@@ -25,7 +25,7 @@ def gsBasis(A):
   
   return B
 
-
+# Some matrix definition
 V = np.array([[1,0,2,6],
               [0,1,8,2],
               [2,8,3,1],
@@ -43,5 +43,8 @@ Normed = gsBasis(V)
 # gsBasis on an orthonormal matrix returns itself
 print(gsBasis(Normed))
 
-# TODO dimension count
+def dimensions(A) :
+    return np.sum(la.norm(gsBasis(A), axis=0))
+
+print(dimensions(V))
               
