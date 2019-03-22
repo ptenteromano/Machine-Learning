@@ -47,4 +47,10 @@ def dimensions(A) :
     return np.sum(la.norm(gsBasis(A), axis=0))
 
 print(dimensions(V))
-              
+
+
+# Now let's see what happens when we have one vector that is a linear combination of the others.
+C = np.array([[1,0,2],
+              [0,1,-3],
+              [1,0,2]], dtype=np.float_)
+gsBasis(C)
