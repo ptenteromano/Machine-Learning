@@ -15,7 +15,7 @@ if len(sys.argv) != 2:
     sys.exit(-1)
 
 # computation imports
-# from numpy import argmin, argmax
+from numpy import argmin, argmax
 from math import sqrt
 from random import uniform as rand
 
@@ -41,15 +41,7 @@ def closest_node(sd,cdd,sc):
     dists = []
     for c in calcNewClust:
         dists.append(euclidDist(pt,c))
-    
-    closest = float('inf')
-    index = -1
-    for i,v in enumerate(dists):
-	if v < closest:
-	    closest = v;
-	    index = i
-    return int(index)
-    # return int(argmin(dists))
+    return int(argmin(dists))
 
 # using closure to wrap the above function as a 'user defined function'
 def cn_wrapper(calcNewClust):
@@ -66,7 +58,7 @@ def randomClusters(k):
     
     #upper range values
     sd_Upper = 35 # guesses
-    cdd_Upper = 20  # guesses 
+    cdd_Upper = 20 # guesses 
     sc_Upper = 24
     
     for i in range(k):
@@ -104,7 +96,7 @@ centroids = {p:clusts for p in players}
 bestClusters = {p:-1 for p in players}
 
 # loop over players
-for player in players:
+for player in players[:1]:
     # for james harden 
     cents = [c for c in centroids[player]]
 
@@ -160,33 +152,16 @@ for player in players:
 	    # check if converged
 	    if iters == 0:
 		checkChange[idx] = [pt for pt in calcNewClust[idx]]
-	    else:
-		# check if they are close-enough
-		if calcNewClust[idx] == checkChange[idx]:
-		    converge += 1
-		else:
-		    # allow a difference of 0.03 for all pts in centroid
-		    epsilon = 0.0009
-		    old = checkChange[idx]
-		    new = calcNewClust[idx]
-		    closeEnough = [round((v1 - v2) ** 2, 6) for v1,v2 in zip(old,new)]
-		    
-		    if all(v <= k for v in closeEnough):
-			converge += 1
+	    elif calcNewClust[idx] == checkChange[idx]:
+		converge += 1	
 	
 	iters += 1
 	print(iters)
 	
 	# if all centroids stop, find best cluster and exit
 	if converge >= 4:
-	    bestClustV = float('inf')
-	    bestClust = -1
-	    for i,v in enumerate(numInClust):
-		if v < bestClustV:
-		    bestClustV = v
-		    bestClust = i
-
-	    print(player, "converged after ", iters, " iterations\n")
+	    bestClust = argmax(numInClust)
+	    print("Converged after ", iters, " iterations\n")
 	    break
 	
 	# if not, assign new to old, and continue
@@ -197,10 +172,14 @@ for player in players:
     bestClusters[player] = calcNewClust[bestClust]
 
 # print functions
+#withClusters.show()
+withClusters.printSchema()
 for player in players:
     print('All Clusters for ', player)
     print('\t', centroids[player])
     print('\tBest Centroid:', bestClusters[player], '\n')
+# print('Number in clust', numInClust)
+# print('Best', bestClust)
 
+print(withClusters.count())
 print('\nDone!')
-
